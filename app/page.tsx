@@ -5,19 +5,26 @@ import Hero from "./components/home/Hero";
 import Product from "./components/product";
 import Image from "next/image";
 import Footer from "./components/Footer";
+import {  productsCategory } from "@/constant/product";
 
 export default function page() {
   return (
     <>
       <Wrapper className="bg-black px-0">
-        <Header />
+        {/* <Header /> */}
         <Hero />
       </Wrapper>
       <Wrapper className=" flex sm:gap-2 gap-21 flex-col justify-between mt-20 sm:flex-row ">
-        <Product image={"/headphone.png"} title="HEADPHONES" />
-        <Product image={"/speakers.png"} title="SPEAKERS" />
-        <Product image={"/earphone.png"} title="EARPHONES" />
+        {productsCategory.map((product) => (
+          <Product
+            key={product.id}
+            image={product.img}
+            title={product.title}
+            link={product.categoryName}
+          />
+        ))}
       </Wrapper>
+
       <Wrapper className="bg-orange my-10 rounded-xl flex text-center flex-col px-0 md:px-0   justify-center items-center py-10 sm:justify-between mx-6 sm:flex-row md:mx-[165px] lg:px-[165px] gap-20 ">
         <Image
           src={"/speakers.png"}
@@ -94,10 +101,11 @@ export default function page() {
         </div>
         <div className="w-full flex justify-center items-center">
           <div>
-            <p className="font-bold mb-5 text-[28px] sm:text-3xl text-center">
-              BRING YOU THE <span className="text-orange">BEST</span> AUDIO GEAR
+            <p className="font-bold mb-5 text-[28px] sm:text-3xl text-center lg:text-start">
+              BRING YOU THE <br className="hidden sm:block" />{" "}
+              <span className="text-orange">BEST</span> AUDIO GEAR
             </p>
-            <p className="text-base">
+            <p className="text-base lg:max-w-100 ">
               Located at the heart of New York City, Audiophile is the premier
               store for high end headphones, earphones, speakers, and audio
               accessories. We have a large showroom and luxury demonstration
@@ -109,9 +117,7 @@ export default function page() {
           </div>
         </div>
       </Wrapper>
-      <Wrapper className="bg-black mt-10">
-        <Footer />
-      </Wrapper>
+      
     </>
   );
 }

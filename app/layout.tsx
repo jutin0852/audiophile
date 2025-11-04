@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
+import Wrapper from "./components/Wrapper";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${manrope.variable} antialiased`}>{children}</body>
+      <body className={` ${manrope.variable} antialiased`}>
+        <Wrapper className="bg-black px-0">
+          <Header />
+        </Wrapper>
+        {children}
+        <Wrapper className="bg-black mt-10">
+          <Footer />
+        </Wrapper>
+      </body>
     </html>
   );
 }
