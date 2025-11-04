@@ -7,21 +7,36 @@ export interface ProductsCategory {
   categoryName: string;
 }
 
+// export interface Products {
+//   id: string;
+//   title: string;
+//   img: string | StaticImport;
+//   category: string;
+//   description: string;
+//   newProduct: boolean;
+//   price: number;
+//   features: string[];
+//   box: { item: string; times: string }[];
+//   detailImg1: string | StaticImport;
+//   detailImg2: string | StaticImport;
+//   detailImg3: string | StaticImport;
+// }
+// types/index.ts
 export interface Products {
-  id: string;
-  title: string;
-  img: string | StaticImport;
-  category: string;
-  description: string;
-  newProduct: boolean;
+  id: string | number;
+  name?: string;
+  title?: string;
   price: number;
-  features: string[];
+  img?: string | StaticImport;
+  category?: string;
+  description?: string;
+  newProduct?: boolean;
+  features?: string[];
   box: { item: string; times: string }[];
   detailImg1: string | StaticImport;
   detailImg2: string | StaticImport;
   detailImg3: string | StaticImport;
 }
-
 export const products: Products[] = [
   {
     id: "yx1wirelessearphone",

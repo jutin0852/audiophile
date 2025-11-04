@@ -3,10 +3,11 @@ import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import Wrapper from "./Wrapper";
-import {  useCart } from "@/context/cartContext";
+import { useCart } from "@/context/cartContext";
 import { CartModal } from "./Cart";
+import { Products } from "@/constant/product";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product }: { product: Products }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -26,7 +27,7 @@ export default function ProductCard({ product }) {
       <div className="flex my-5 w-full lg:max-w-[540px]">
         <div className="bg-cream py-15 lg:py-20 mx-auto flex-1 flex justify-center">
           <Image
-            src={product.img}
+            src={product.img!}
             height={400}
             width={400}
             className="w-40 lg:w-60"

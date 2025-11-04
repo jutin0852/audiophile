@@ -1,5 +1,4 @@
 import BestGear from "@/app/components/BestGear";
-import { CartModal } from "@/app/components/Cart";
 import Catergory from "@/app/components/Catergory";
 import Others from "@/app/components/Others";
 import ProductCard from "@/app/components/ProductCard";
@@ -28,7 +27,7 @@ export default async function ProductDetails({
         <div className="flex lg:max-w-[650px]  ">
           <div className="  flex-1 flex-col flex ">
             <h2 className="font-bold">FEATURES</h2>
-            {product.features.map((f, i) => (
+            {product.features?.map((f, i) => (
               <p className="mb-3 text-black/60" key={i}>
                 {f}
               </p>

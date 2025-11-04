@@ -1,4 +1,5 @@
 "use client";
+import { Products } from "@/constant/product";
 import React, { useState, createContext, useContext, ReactNode } from "react";
 
 
@@ -10,20 +11,20 @@ export const useCart = () => {
   return context;
 };
 
-export type Product = {
-  id: string | number;
-  name: string;
-  price: number;
-  [key: string]: any;
-};
+// export type Product = {
+//   id: string | number;
+//   name: string;
+//   price: number;
+//   [key: string]: any;
+// };
 
-type CartItem = Product & { quantity: number };
+type CartItem = Products & { quantity: number };
 
 type CartContextType = {
   cartItems: CartItem[];
   isCartOpen: boolean;
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  addToCart: (product: Product) => void;
+  addToCart: (product: Products) => void;
   removeFromCart: (productId: string | number) => void;
   updateQuantity: (productId: string | number, quantity: number) => void;
   clearCart: () => void;
@@ -39,7 +40,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Products) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
 
