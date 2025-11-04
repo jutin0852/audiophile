@@ -11,12 +11,7 @@ export const useCart = () => {
   return context;
 };
 
-// export type Product = {
-//   id: string | number;
-//   name: string;
-//   price: number;
-//   [key: string]: any;
-// };
+
 
 type CartItem = Products & { quantity: number };
 

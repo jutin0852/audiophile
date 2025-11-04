@@ -1,5 +1,6 @@
 import { useCart } from "@/context/cartContext";
 import { Minus, Plus, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const CartModal = () => {
@@ -41,7 +42,15 @@ export const CartModal = () => {
               {cartItems.map((item) => (
                 <div key={item.id} className="flex items-center gap-4">
                   <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center text-2xl">
-                    {item.image || "🎧"}
+                    {item.img && (
+                      <Image
+                        className="text-3xl mr-4"
+                        src={item.img}
+                        height={100}
+                        width={100}
+                        alt=""
+                      />
+                    )}
                   </div>
 
                   <div className="flex-1">

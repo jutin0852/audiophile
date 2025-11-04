@@ -34,7 +34,7 @@ export default async function ProductCatergory({
           <div className="flex my-5 w-full  lg:max-w-[540px] ">
             <div className="bg-cream  py-15 lg:py-20 mx-auto flex-1  flex justify-center ">
               <Image
-                src={product.img}
+                src={product.img!}
                 height={100}
                 width={100}
                 className="lg:w-40"

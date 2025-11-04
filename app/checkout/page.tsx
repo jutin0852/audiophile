@@ -5,6 +5,7 @@ import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
 import { useCart } from "@/context/cartContext";
+import Image from "next/image";
 
 interface FormErrors {
   [key: string]: string;
@@ -30,7 +31,7 @@ const AudiophileCheckout = () => {
   });
 
   const { cartItems } = useCart();
-  console.log(cartItems)
+  console.log(cartItems);
   const orderItems = cartItems.map(({ id, name, price, quantity }) => ({
     id,
     name,
@@ -152,7 +153,15 @@ const AudiophileCheckout = () => {
         <div className="flex mb-6">
           <div className="bg-gray-100 p-4 flex-1 rounded-l-lg">
             <div className="flex items-center mb-2">
-              <span className="text-2xl mr-3">{cartItems[0].image}</span>
+              {cartItems[0].img && (
+                <Image
+                  className="text-3xl mr-4"
+                  src={cartItems[0].img}
+                  height={100}
+                  width={100}
+                  alt=""
+                />
+              )}
               <div>
                 <p className="font-bold text-sm">{cartItems[0].name}</p>
                 <p className="text-gray-600 text-sm">
@@ -456,7 +465,15 @@ const AudiophileCheckout = () => {
             <div className="space-y-4 mb-6">
               {cartItems.map((item) => (
                 <div key={item.id} className="flex items-center">
-                  <span className="text-3xl mr-4">{item.image}</span>
+                  {item.img && (
+                    <Image
+                      className="text-3xl mr-4"
+                      src={item.img}
+                      height={100}
+                      width={100}
+                      alt=""
+                    />
+                  )}
                   <div className="flex-1">
                     <p className="font-bold text-sm">{item.name}</p>
                     <p className="text-gray-600 text-sm">

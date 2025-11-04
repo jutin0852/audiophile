@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Wrapper from "./Wrapper";
-import { otherProducts, productsCategory } from "@/constant/product";
+import { otherProducts } from "@/constant/product";
 
 export default function Others() {
   return (
