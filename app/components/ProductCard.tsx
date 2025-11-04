@@ -3,10 +3,10 @@ import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import Wrapper from "./Wrapper";
-import { Product, useCart } from "@/context/cartContext";
+import {  useCart } from "@/context/cartContext";
 import { CartModal } from "./Cart";
 
-export default function ProductCard({ product }: Product) {
+export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
