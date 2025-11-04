@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { ConvexClientProvider } from "@/provider/convexProvider";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -31,7 +27,7 @@ export default function RootLayout({
         <Wrapper className="bg-black px-0">
           <Header />
         </Wrapper>
-        {children}
+        <ConvexClientProvider> {children}</ConvexClientProvider>
         <Wrapper className="bg-black mt-10">
           <Footer />
         </Wrapper>

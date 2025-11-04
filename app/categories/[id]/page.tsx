@@ -52,10 +52,12 @@ export default async function ProductCatergory({
               <h1 className="font-bold text-[36px] sm:text-[56px] leading-10 sm:leading-14">
                 {product.title}
               </h1>
-              <p className="text-sm text-[15px]">{product.description}</p>
-              <button className="bg-orange p-3 w-40 m-auto lg:m-0 text-white font-semibold">
-                <Link href={`/productDetails/${product.id}`}>See Product</Link>
-              </button>
+              <p className="text-sm text-[15px]">{product.description}</p>{" "}
+              <Link href={`/productDetails/${product.id}`}>
+                <button className="bg-orange p-3 w-40 m-auto lg:m-0 text-white font-semibold">
+                  See Product
+                </button>
+              </Link>
             </div>
           </div>
         </Wrapper>

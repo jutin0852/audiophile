@@ -25,7 +25,7 @@ body {
 }
 
 @theme {
-  --color-*: initial;
+  /* --color-*: initial; */
   --color-light-cream: #fafafa;
   --color-white: #ffffff;
   --color-cream: #f1f1f1;

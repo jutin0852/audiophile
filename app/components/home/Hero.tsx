@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function Hero() {
   return (
-    <section>
+    <section className="lg:pb-15">
       <div
         className="h-96 sm:h-182 bg-cover bg-center flex justify-center items-center lg:hidden"
         style={{ backgroundImage: "url('/hero.png')" }}
@@ -31,7 +32,9 @@ export default function Hero() {
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </p>
-            <button className="bg-orange p-3 w-40 ">See Product</button>
+            <Link href={"/productDetails/xx99mark2headphones"}>
+              <button className="bg-orange p-3 w-40 ">See Product</button>
+            </Link>
           </div>
         </div>
 

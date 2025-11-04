@@ -1,12 +1,10 @@
 import BestGear from "@/app/components/BestGear";
 import Catergory from "@/app/components/Catergory";
 import Others from "@/app/components/Others";
-import Product from "@/app/components/product";
 import Wrapper from "@/app/components/Wrapper";
-import { products, productsCategory } from "@/constant/product";
+import { products } from "@/constant/product";
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+
 
 export default async function ProductDetails({
   params,
@@ -29,10 +27,9 @@ export default async function ProductDetails({
           <div className="bg-cream py-15 lg:py-20 mx-auto flex-1 flex justify-center">
             <Image
               src={product.img}
-              height={400} // Much larger base size
+              height={400} 
               width={400}
-              quality={95} // Higher quality
-              className="w-40 lg:w-60" // Scale down from larger size
+              className="w-40 lg:w-60" 
               alt="headphone"
             />
           </div>
@@ -98,7 +95,6 @@ export default async function ProductDetails({
                 src={product.detailImg1}
                 alt="Image 1"
                 fill
-                quality={90}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
@@ -109,7 +105,6 @@ export default async function ProductDetails({
                 src={product.detailImg2}
                 alt="Image 2"
                 fill
-                quality={90}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
@@ -121,7 +116,6 @@ export default async function ProductDetails({
               src={product.detailImg3}
               alt="Image 3"
               fill
-              quality={90}
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
