@@ -18,10 +18,10 @@ export const CartModal = () => {
   if (!isCartOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+    <div className="fixed inset-0 bg-black/40 bg-opacity-50 z-50 flex justify-end">
       <div className="absolute inset-0" onClick={() => setIsCartOpen(false)} />
 
-      <div className="bg-white w-full max-w-md p-6 relative overflow-y-auto">
+      <div className="bg-white w-full max-w-90 p-6 relative lg:right-30 lg:top-10 rounded-xl h-120 overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-bold">CART ({cartItems.length})</h2>
           <button

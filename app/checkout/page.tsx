@@ -31,6 +31,7 @@ const AudiophileCheckout = () => {
   });
 
   const { cartItems } = useCart();
+  console.log(cartItems)
   const orderItems = cartItems.map(({ id, name, price, quantity }) => ({
     id,
     name,

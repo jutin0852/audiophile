@@ -17,8 +17,8 @@ export default defineSchema({
     }),
     items: v.array(
       v.object({
-        id: v.number(),
-        name: v.string(),
+        id: v.union(v.string(), v.number()),
+        name: v.optional(v.string()), 
         price: v.number(),
         quantity: v.number(),
       })

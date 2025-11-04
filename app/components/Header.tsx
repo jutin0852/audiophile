@@ -2,12 +2,14 @@
 import { useCart } from "@/context/cartContext";
 import { Menu, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { CartModal } from "./Cart";
 
 export default function Header() {
   const { getCartCount, setIsCartOpen } = useCart();
   const cartCount = getCartCount();
   return (
     <header className="bg-black flex justify-between py-8 px-6 lg:py-[35px]  relative border-b-white">
+      <CartModal />
       <Menu color="white" className="lg:hidden" />
       <Link href={"/"}>
         <img
@@ -28,7 +30,7 @@ export default function Header() {
         </ul>
       </nav>
       <button
-        onClick={() => setIsCartOpen(true) }
+        onClick={() => setIsCartOpen(true)}
         className="relative hover:text-orangetransition-colors"
       >
         <ShoppingCart className="w-6 h-6" color="white" />
