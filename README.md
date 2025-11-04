@@ -21,8 +21,8 @@ Lucide React (Icons)
 Context API (State Management)
 
 📦 Installation
-bashgit clone https://github.com/yourusername/audiophile-ecommerce.git
-cd audiophile-ecommerce
+bashgit clone https://github.com/jutin0852/audiophile.git
+cd audiophile
 npm install
 🔐 Environment Variables
 Create .env.local file:
