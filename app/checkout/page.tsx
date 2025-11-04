@@ -4,6 +4,7 @@ import { Check, ArrowLeft, Package, CreditCard } from "lucide-react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
+import { useCart } from "@/context/cartContext";
 
 interface FormErrors {
   [key: string]: string;
@@ -28,11 +29,8 @@ const AudiophileCheckout = () => {
     eMoneyPin: "",
   });
 
-  const cartItems = [
-    { id: 1, name: "XX99 MK II", price: 2999, quantity: 1, image: "🎧" },
-    { id: 2, name: "XX59", price: 899, quantity: 2, image: "🎧" },
-    { id: 3, name: "YX1", price: 599, quantity: 1, image: "🎧" },
-  ];
+  const { cartItems } = useCart();
+  console.log(cartItems)
   const orderItems = cartItems.map(({ id, name, price, quantity }) => ({
     id,
     name,
@@ -40,7 +38,7 @@ const AudiophileCheckout = () => {
     quantity,
   }));
 
-  const subtotal = cartItems.reduce(
+  const subtotal = orderItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
@@ -83,7 +81,9 @@ const AudiophileCheckout = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
@@ -117,17 +117,15 @@ const AudiophileCheckout = () => {
         status: "confirmed",
         timestamp: new Date().toISOString(),
       };
-      console.log(orderData)
+      console.log(orderData);
 
-    //   await createOrder(orderData);
+      await createOrder(orderData);
 
-      const res = await fetch("/api/send", {
+      await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),
       });
-       const data = await res.json();
-       console.log(data);
 
       setShowModal(true);
     } catch (error) {
@@ -198,17 +196,19 @@ const AudiophileCheckout = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <button className="flex items-center text-gray-600 mb-6 hover:text-black">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Go Back
-        </button>
+        <Link href={"/"}>
+          <button className="flex items-center text-gray-600 mb-6 hover:text-black">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Go Back
+          </button>
+        </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 bg-white rounded-lg p-6 md:p-8">
             <h2 className="text-3xl font-bold mb-8">CHECKOUT</h2>
 
             <div className="mb-8">
-              <h3 className="text-orange-500 text-sm font-bold mb-4">
+              <h3 className="text-orange text-sm font-bold mb-4">
                 BILLING DETAILS
               </h3>
 
@@ -222,7 +222,7 @@ const AudiophileCheckout = () => {
                     onChange={handleInputChange}
                     className={`w-full px-4 py-3 border rounded ${
                       errors.name ? "border-red-500" : "border-gray-300"
-                    } focus:outline-none focus:border-orange-500`}
+                    } focus:outline-none focus:border-orange`}
                     placeholder="Alexei Ward"
                   />
                   {errors.name && (
@@ -241,7 +241,7 @@ const AudiophileCheckout = () => {
                     onChange={handleInputChange}
                     className={`w-full px-4 py-3 border rounded ${
                       errors.email ? "border-red-500" : "border-gray-300"
-                    } focus:outline-none focus:border-orange-500`}
+                    } focus:outline-none focus:border-orange`}
                     placeholder="alexei@mail.com"
                   />
                   {errors.email && (
@@ -261,7 +261,7 @@ const AudiophileCheckout = () => {
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded ${
                     errors.phone ? "border-red-500" : "border-gray-300"
-                  } focus:outline-none focus:border-orange-500`}
+                  } focus:outline-none focus:border-orange`}
                   placeholder="+1 202-555-0136"
                 />
                 {errors.phone && (
@@ -271,7 +271,7 @@ const AudiophileCheckout = () => {
             </div>
 
             <div className="mb-8">
-              <h3 className="text-orange-500 text-sm font-bold mb-4">
+              <h3 className="text-orange text-sm font-bold mb-4">
                 SHIPPING INFO
               </h3>
 
@@ -286,7 +286,7 @@ const AudiophileCheckout = () => {
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded ${
                     errors.address ? "border-red-500" : "border-gray-300"
-                  } focus:outline-none focus:border-orange-500`}
+                  } focus:outline-none focus:border-orange`}
                   placeholder="1137 Williams Avenue"
                 />
                 {errors.address && (
@@ -306,7 +306,7 @@ const AudiophileCheckout = () => {
                     onChange={handleInputChange}
                     className={`w-full px-4 py-3 border rounded ${
                       errors.zipCode ? "border-red-500" : "border-gray-300"
-                    } focus:outline-none focus:border-orange-500`}
+                    } focus:outline-none focus:border-orange`}
                     placeholder="10001"
                   />
                   {errors.zipCode && (
@@ -325,7 +325,7 @@ const AudiophileCheckout = () => {
                     onChange={handleInputChange}
                     className={`w-full px-4 py-3 border rounded ${
                       errors.city ? "border-red-500" : "border-gray-300"
-                    } focus:outline-none focus:border-orange-500`}
+                    } focus:outline-none focus:border-orange`}
                     placeholder="New York"
                   />
                   {errors.city && (
@@ -343,7 +343,7 @@ const AudiophileCheckout = () => {
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded ${
                     errors.country ? "border-red-500" : "border-gray-300"
-                  } focus:outline-none focus:border-orange-500`}
+                  } focus:outline-none focus:border-orange`}
                   placeholder="United States"
                 />
                 {errors.country && (
@@ -353,7 +353,7 @@ const AudiophileCheckout = () => {
             </div>
 
             <div className="mb-8">
-              <h3 className="text-orange-500 text-sm font-bold mb-4">
+              <h3 className="text-orange text-sm font-bold mb-4">
                 PAYMENT DETAILS
               </h3>
 
@@ -362,7 +362,7 @@ const AudiophileCheckout = () => {
                   Payment Method
                 </label>
                 <div className="space-y-2">
-                  <label className="flex items-center px-4 py-3 border rounded cursor-pointer hover:border-orange-500">
+                  <label className="flex items-center px-4 py-3 border rounded cursor-pointer hover:border-orange">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -375,7 +375,7 @@ const AudiophileCheckout = () => {
                     e-Money
                   </label>
 
-                  <label className="flex items-center px-4 py-3 border rounded cursor-pointer hover:border-orange-500">
+                  <label className="flex items-center px-4 py-3 border rounded cursor-pointer hover:border-orange">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -405,7 +405,7 @@ const AudiophileCheckout = () => {
                         errors.eMoneyNumber
                           ? "border-red-500"
                           : "border-gray-300"
-                      } focus:outline-none focus:border-orange-500`}
+                      } focus:outline-none focus:border-orange`}
                       placeholder="238521993"
                     />
                     {errors.eMoneyNumber && (
@@ -426,7 +426,7 @@ const AudiophileCheckout = () => {
                       onChange={handleInputChange}
                       className={`w-full px-4 py-3 border rounded ${
                         errors.eMoneyPin ? "border-red-500" : "border-gray-300"
-                      } focus:outline-none focus:border-orange-500`}
+                      } focus:outline-none focus:border-orange`}
                       placeholder="6891"
                     />
                     {errors.eMoneyPin && (
@@ -435,6 +435,16 @@ const AudiophileCheckout = () => {
                       </p>
                     )}
                   </div>
+                </div>
+              )}
+              {formData.paymentMethod === "Cash on Delivery" && (
+                <div>
+                  <p>
+                    The ‘Cash on Delivery’ option enables you to pay in cash
+                    when our delivery courier arrives at your residence. Just
+                    make sure your address is correct so that your order will
+                    not be cancelled.
+                  </p>
                 </div>
               )}
             </div>
@@ -475,7 +485,7 @@ const AudiophileCheckout = () => {
 
             <div className="flex justify-between mb-6">
               <span className="text-gray-600">GRAND TOTAL</span>
-              <span className="font-bold text-orange-500 text-lg">
+              <span className="font-bold text-orange text-lg">
                 $ {grandTotal.toLocaleString()}
               </span>
             </div>

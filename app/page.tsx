@@ -1,17 +1,14 @@
 import React from "react";
-import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
 import Hero from "./components/home/Hero";
 import Product from "./components/product";
 import Image from "next/image";
-import Footer from "./components/Footer";
-import {  productsCategory } from "@/constant/product";
+import { productsCategory } from "@/constant/product";
 
 export default function page() {
   return (
     <>
       <Wrapper className="bg-black px-0">
-        {/* <Header /> */}
         <Hero />
       </Wrapper>
       <Wrapper className=" flex sm:gap-2 gap-21 flex-col justify-between mt-20 sm:flex-row ">
@@ -117,7 +114,6 @@ export default function page() {
           </div>
         </div>
       </Wrapper>
-      
     </>
   );
 }

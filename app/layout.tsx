@@ -5,6 +5,7 @@ import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { ConvexClientProvider } from "@/provider/convexProvider";
+import { CartProvider } from "@/context/cartContext";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -24,13 +25,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${manrope.variable} antialiased`}>
-        <Wrapper className="bg-black px-0">
-          <Header />
-        </Wrapper>
-        <ConvexClientProvider> {children}</ConvexClientProvider>
-        <Wrapper className="bg-black mt-10">
-          <Footer />
-        </Wrapper>
+        <CartProvider>
+          <Wrapper className="bg-black px-0">
+            <Header />
+          </Wrapper>
+          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <Wrapper className="bg-black mt-10">
+            <Footer />
+          </Wrapper>
+        </CartProvider>
       </body>
     </html>
   );

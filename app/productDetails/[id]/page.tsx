@@ -1,10 +1,11 @@
 import BestGear from "@/app/components/BestGear";
+import { CartModal } from "@/app/components/Cart";
 import Catergory from "@/app/components/Catergory";
 import Others from "@/app/components/Others";
+import ProductCard from "@/app/components/ProductCard";
 import Wrapper from "@/app/components/Wrapper";
 import { products } from "@/constant/product";
 import Image from "next/image";
-
 
 export default async function ProductDetails({
   params,
@@ -19,44 +20,8 @@ export default async function ProductDetails({
   }
   return (
     <div className="lg:px-10">
-      <Wrapper
-        key={product.id}
-        className={`my-15 lg:mb-40 flex-col flex justify-between lg:flex-row  lg:gap-20 `}
-      >
-        <div className="flex my-5 w-full lg:max-w-[540px]">
-          <div className="bg-cream py-15 lg:py-20 mx-auto flex-1 flex justify-center">
-            <Image
-              src={product.img}
-              height={400} 
-              width={400}
-              className="w-40 lg:w-60" 
-              alt="headphone"
-            />
-          </div>
-        </div>
-        <div className="flex">
-          <div className="m-auto font-manrope text-center lg:text-start lg:text-st font-light flex flex-col justify-center gap-3 max-w-[379px]  ">
-            {product.newProduct && (
-              <p className=" tracking-[10px] text-[14px] text-orange ">
-                NEW PRODUCT
-              </p>
-            )}
-            <h1 className="font-bold text-[36px] sm:text-[56px] leading-10 sm:leading-14">
-              {product.title}
-            </h1>
-            <p className="text-sm text-[15px]">{product.description}</p>
-            <p className="font-bold">${product.price}</p>
-            <div className="flex  flex-wrap gap-4 ">
-              <button className="bg-cream p-3 w-40 m-auto lg:m-0 text-black font-semibold">
-                1
-              </button>
-              <button className="bg-orange p-3 w-40 text-white m-auto lg:m-0 font-semibold">
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-        </div>
-      </Wrapper>
+      <ProductCard product={product} />
+
       <Wrapper
         className={`my-15 lg:mb-40 flex-col justify-between flex  lg:flex-row   lg:gap-20 `}
       >
