@@ -12,7 +12,7 @@ interface FormErrors {
 }
 
 const AudiophileCheckout = () => {
-  //   const [orderPlaced, setOrderPlaced] = useState(false);
+  const createOrder = useMutation(api.orders.createOrder);
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,7 +31,6 @@ const AudiophileCheckout = () => {
   });
 
   const { cartItems } = useCart();
-  console.log(cartItems);
   const orderItems = cartItems.map(({ id, name, price, quantity }) => ({
     id,
     name,
@@ -92,7 +91,6 @@ const AudiophileCheckout = () => {
     }
   };
 
-  const createOrder = useMutation(api.orders.createOrder);
 
   const handleSubmit = async () => {
     if (!validateForm()) return;
