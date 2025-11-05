@@ -18,7 +18,9 @@ export default function Hero() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <button className="bg-orange p-3 w-40 m-auto">See Product</button>
+          <Link href={"/productDetails/xx99mark2headphones"}>
+            <button className="bg-orange p-3 w-40 ">See Product</button>
+          </Link>
         </div>
       </div>
       <section className="flex gap-10 justify-between pb-20 max-lg:hidden">

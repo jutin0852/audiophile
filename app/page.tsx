@@ -4,6 +4,7 @@ import Hero from "./components/home/Hero";
 import Product from "./components/product";
 import Image from "next/image";
 import { productsCategory } from "@/constant/product";
+import Link from "next/link";
 
 export default function page() {
   return (
@@ -38,9 +39,11 @@ export default function page() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <button className="bg-black p-3 w-40 my-3 text-white ">
-            SEE PRODUCT
-          </button>
+          <Link href={"/productDetails/zx9speaker"}>
+            <button className="bg-black p-3 w-40 my-3 text-white ">
+              SEE PRODUCT
+            </button>
+          </Link>
         </div>
       </Wrapper>
       <Wrapper>
@@ -49,10 +52,12 @@ export default function page() {
           style={{ backgroundImage: "url('/speaker-mobile.png')" }}
         >
           <div className="ml-5">
-            <p className="text-xl font-bold">ZX9 SPEAKER</p>
-            <button className="border-black font-bold border-2 lg:border-none lg:bg-black p-3 w-40 my-3 text-black lg:text-white ">
-              SEE PRODUCT
-            </button>
+            <p className="text-xl font-bold">ZX SPEAKER</p>
+            <Link href={"/productDetails/zxSpeaker"}>
+              <button className="border-black font-bold border-2 lg:border-none lg:bg-black p-3 w-40 my-3 text-black lg:text-white ">
+                SEE PRODUCT
+              </button>
+            </Link>
           </div>
         </div>
         <div
@@ -60,10 +65,12 @@ export default function page() {
           style={{ backgroundImage: "url('/speakerlg.png')" }}
         >
           <div className="ml-7">
-            <p className="text-xl font-bold">ZX9 SPEAKER</p>
-            <button className="border-black font-bold border-2 p-3 w-40 my-3 text-black ">
-              SEE PRODUCT
-            </button>
+            <p className="text-xl font-bold">ZX SPEAKER</p>
+            <Link href={"/productDetails/zxSpeaker"}>
+              <button className="border-black font-bold border-2 p-3 w-40 my-3 text-black ">
+                SEE PRODUCT
+              </button>
+            </Link>
           </div>
         </div>
       </Wrapper>
@@ -79,9 +86,11 @@ export default function page() {
         <div className="bg-cream w-full  rounded-xl p-5 flex justify-start lg:justify-center items-center">
           <div>
             <p className="font-black text-[14px] lg:text-xl">YX1 EARPHONES</p>
-            <button className="border-black font-bold border-2 lg:border-none lg:bg-black p-3 w-40 my-3 text-black lg:text-white ">
-              SEE PRODUCT
-            </button>
+            <Link href={"/productDetails/yx1wirelessearphone"}>
+              <button className="border-black font-bold border-2 lg:border-none lg:bg-black p-3 w-40 my-3 text-black lg:text-white ">
+                SEE PRODUCT
+              </button>
+            </Link>
           </div>
         </div>
       </Wrapper>
